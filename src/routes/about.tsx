@@ -5,7 +5,7 @@ import bgLab from "@/assets/bg-lab.jpg";
 import bgBlossom from "@/assets/bg-blossom.jpg";
 import hero from "@/assets/hero-ellivion.png";
 import praveensir from "@/assets/praveensir.png";
-import devyanssir from "@/assets/devyans.jpeg";
+import devyanssir from "@/assets/devyans.png";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
@@ -26,8 +26,8 @@ function AboutPage() {
   };
 
   const directors: TeamMember[] = [
-     { name: "Praveen Bahri", role: "Director", initial: "PB", bio: "Brings valuable expertise from the pharmaceutical sector, guiding product development with deep understanding of ingredient efficacy, product consistency, and consumer safety.", image: praveensir },
-    { name: "Devyansh Chandel", role: "Director", initial: "DC", bio: "Brings valuable expertise from the information technology sector, enabling operational excellence, market insight, and a balanced approach to wellness innovation.", image: devyanssir },
+     { name: "Praveen Bahri", role: "Director", initial: "PB", bio: "Praveen Bahri provides strategic guidance across product development and quality assurance, drawing on extensive experience in the pharmaceutical sector. His focus on integrity, efficacy, and customer wellbeing continues to shape Ellivion's commitment to excellence.", image: praveensir },
+    { name: "Devyansh Chandel", role: "Director", initial: "DC", bio: "Bringing together expertise in technology, operations, and brand development, Devyansh Chandel focuses on building scalable systems and exceptional customer experiences. His approach drives Ellivion's mission to make quality wellness products more accessible and trusted.", image: devyanssir },
    
   ];
 
@@ -67,12 +67,12 @@ function AboutPage() {
           </div>
         </Reveal>
         <Reveal delay={150}>
-          <h2 className="text-4xl md:text-5xl">Our <em className="italic text-pink">mission.</em></h2>
+          <h2 className="text-4xl md:text-5xl">Our <em className="italic text-pink">philosophy.</em></h2>
           <div className="mt-10 space-y-8">
             {[
-              { icon: Leaf, t: "Thoughtfully Formulated", d: "Rooted in the timeless principles of Ayurveda, we create authentic formulations that promote balance, vitality, and long-term wellness." },
-              { icon: FlaskConical, t: "Modern nutritional science", d: "Strengthened by contemporary scientific research, every product is designed for efficacy, purity, and safety." },
-              { icon: ShieldCheck, t: "Quality & transparency", d: "We maintain rigorous quality standards, responsible sourcing, and continuous innovation — ensuring health solutions you can trust." },
+              { icon: Leaf, t: "Tradition & Innovation", d: "We draw inspiration from trusted wellness traditions while embracing modern research and evolving consumer needs." },
+              { icon: FlaskConical, t: "Science-Driven Excellence", d: "Every product is developed with a focus on quality, efficacy, and continuous improvement—guided by research and rigorous standards." },
+              { icon: ShieldCheck, t: "Transparency & Trust", d: "From ingredient sourcing to third-party testing, we believe confidence comes from openness, accountability, and consistency." },
             ].map((x, i) => (
               <div key={i} className="flex gap-6 border-t border-pink/30 pt-6">
                 <div>
@@ -95,8 +95,8 @@ function AboutPage() {
         <Reveal>
           <div className="text-center max-w-2xl mx-auto">
             <p className="text-xs uppercase tracking-[0.25em] text-pink font-semibold">Leadership</p>
-            <h2 className="mt-4 text-4xl md:text-5xl">Our <em className="italic text-pink">directors.</em></h2>
-            <p className="mt-4 text-foreground/70">Visionaries bridging pharmaceutical expertise and technology to guide Ellivion's journey.</p>
+            <h2 className="mt-4 text-4xl md:text-5xl">Leadership  <em className="italic text-pink">team.</em></h2>
+            <p className="mt-4 text-foreground/70">Combining industry expertise, innovation, and a shared commitment to building a trusted wellness brand.</p>
           </div>
         </Reveal>
         <div className="mt-16 grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
@@ -129,13 +129,13 @@ function AboutPage() {
         <div className="absolute inset-0 bg-navy/80" />
         <div className="relative mx-auto max-w-5xl px-6 grid sm:grid-cols-3 gap-12 text-center text-white">
           {[
-            { k: "100%", v: "Batch-wise third-party tested" },
-            { k: " Ayurveda +", v: "Modern nutritional science" },
-            { k: "100%", v: "Quality & purity commitment" },
+            { k: "Quality", },
+            { k: "Wellness" },
+            { k: "Transparency"},
           ].map((s) => (
             <Reveal key={s.k}>
               <div className="font-display text-5xl md:text-7xl text-white">{s.k}</div>
-              <div className="mt-3 text-sm text-white/80 uppercase tracking-wider">{s.v}</div>
+          
             </Reveal>
           ))}
         </div>
@@ -153,10 +153,10 @@ function AboutPage() {
         </Reveal>
         <div className="mt-16 grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
           {[
-            { title: "Rigorous batch-wise testing", desc: "Every product undergoes rigorous batch-wise testing through independent third-party laboratories to ensure safety, consistency, and full alignment with label claims." },
-            { title: "Verified ingredient accuracy", desc: "This process verifies ingredient accuracy, confirms precise dosage, and ensures the absence of harmful contaminants while maintaining strict compliance with regulatory standards." },
-            { title: "Trust-first marketing", desc: "Our philosophy is rooted in trust-first marketing, where transparency, evidence, and accountability take precedence over mere promotion." },
-            { title: "Responsible communication", desc: "Clear usage guidelines, caution statements, allergen disclosures, and transparent compliance practices ensure complete customer confidence and accountability." },
+            { title: "Third-Party Tested", desc: "Independent laboratory testing verifies purity, potency, and safety for every batch." },
+            { title: "Quality Assured", desc: "Products are evaluated against strict specifications before release." },
+            { title: " Transparent Reporting", desc: "Batch-specific quality reports are available for customer verification." },
+            { title: "Trusted Standards", desc: "Our commitment to integrity guides every stage of product development." },
           ].map((item, i) => (
             <Reveal key={item.title} delay={i * 80}>
               <div className="flex gap-5 bg-card rounded-2xl p-6 border border-pink/10 hover:border-pink/30 transition-all duration-500">
@@ -175,7 +175,7 @@ function AboutPage() {
         </div>
         <Reveal>
           <p className="mt-16 text-center text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-            Ellivion is not just a brand — it is a commitment to consistency, clarity, care, and credibility. By combining scientific validation with honest communication, we aim to build lasting customer relationships founded on trust, integrity, and wellness excellence.
+          Quality is not a claim — it is a standard we uphold in every product we create.
           </p>
         </Reveal>
       </section>
@@ -191,10 +191,10 @@ function AboutPage() {
             <div className="text-center max-w-2xl mx-auto">
               <p className="text-xs uppercase tracking-[0.25em] text-pink font-semibold">Advisory board</p>
               <h2 className="mt-4 text-4xl md:text-5xl">Our <em className="italic text-pink">advisors.</em></h2>
-              <p className="mt-4 text-foreground/70">Scientists, clinicians, and operators who hold our work to the highest standard.</p>
+              <p className="mt-4 text-foreground/70">Experienced professionals and industry experts who help guide our commitment to quality, innovation, and consumer wellbeing.</p>
             </div>
           </Reveal>
-          <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {advisors.map((p, i) => (
               <Reveal key={p.name} delay={i * 70}>
                 <div className="flex gap-5 bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-pink/15 hover:border-pink/40 transition-all duration-500">
@@ -213,7 +213,7 @@ function AboutPage() {
                 </div>
               </Reveal>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
     </div>
