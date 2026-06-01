@@ -32,7 +32,7 @@ function ProductsPage() {
           <p className="text-xs uppercase tracking-[0.25em] text-white font-semibold">Collection</p>
           <h1 className="mt-4 text-5xl md:text-7xl max-w-3xl leading-[1.02] text-white">The complete <em className="italic text-white">wellness</em> ritual.</h1>
           <p className="mt-6 text-white text-foreground/75 max-w-xl text-lg">
-            Each Ellivion formula is the result of Ayurvedic wisdom, modern nutritional science, rigorous testing, and a refusal to compromise.
+            Each Ellivion formula is the result of Thoughtfully Formulated, modern nutritional science, rigorous testing, and a refusal to compromise.
           </p>
         </div>
       </section>
@@ -65,7 +65,7 @@ function ProductsPage() {
                   <p className="text-xs text-pink uppercase tracking-wider font-semibold">{p.category}</p>
                   <div className="flex justify-between items-baseline mt-2">
                     <h3 className="text-xl text-navy">{p.name}</h3>
-                    <span className="font-semibold text-navy">${p.price}</span>
+                    <span className="font-semibold text-navy">₹{p.price}</span>
                   </div>
                   <p className="mt-2 text-sm text-foreground/70">{p.desc}</p>
                   <button className="mt-5 w-full py-3 rounded-full btn-vibrant text-sm font-medium inline-flex items-center justify-center gap-2">

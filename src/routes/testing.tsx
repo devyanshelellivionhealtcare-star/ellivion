@@ -8,13 +8,13 @@ import { TEST_REPORTS, type TestReport } from "@/data/testReports";
 export const Route = createFileRoute("/testing")({
   head: () => ({
     meta: [
-      { title: "Lab Testing & Batch Reports — Ellivion Healthcare" },
+      { title: "Every Batch. Independently Tested. Fully Transparent." },
       {
         name: "description",
         content:
           "Search Ellivion Healthcare batch test reports by batch number. Download lab-verified quality reports as PDF.",
       },
-      { property: "og:title", content: "Lab Testing & Batch Reports — Ellivion Healthcare" },
+      { property: "og:title", content: "Every Batch. Independently Tested. Fully Transparent." },
       {
         property: "og:description",
         content:
@@ -131,10 +131,10 @@ function TestingPage() {
         <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-pink/40 via-transparent to-pink/10" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 text-center">
           <p className="text-pink uppercase tracking-[0.3em] text-xs font-semibold">Quality you can verify</p>
-          <h1 className="font-display text-4xl md:text-6xl mt-4">Lab Testing & Batch Reports</h1>
+          <h1 className="font-display text-4xl md:text-6xl mt-4 text-white">Every Batch. Independently Tested. Fully Transparent.
+</h1>
           <p className="mt-5 text-white/80 max-w-2xl mx-auto">
-            Every Ellivion batch is independently lab-tested for purity, potency and safety.
-            Enter your product's batch number to view and download its certificate of analysis.
+         Every Ellivion product undergoes third-party laboratory testing to verify purity, potency, and safety. Enter your batch number below to access the Certificate of Analysis (COA) and view the quality standards behind your purchase.
           </p>
         </div>
       </section>
@@ -163,7 +163,8 @@ function TestingPage() {
           </button>
         </form>
         <p className="text-xs text-muted-foreground mt-3 text-center">
-          Try sample batches:{" "}
+         Every production batch is tested by independent accredited laboratories to verify purity, potency, and safety before release.
+:{" "}
           {TEST_REPORTS.map((r, i) => (
             <span key={r.batchNumber}>
               <button
@@ -268,9 +269,9 @@ function TestingPage() {
         {!searched && (
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: FlaskConical, title: "Independent testing", text: "Every batch tested for purity, potency and safety in accredited labs." },
-              { icon: ShieldCheck, title: "AYUSH & FSSAI aligned", text: "Specifications meet Indian regulatory and Ellivion internal standards." },
-              { icon: FileCheck2, title: "Transparent reports", text: "Download a digitally signed Certificate of Analysis for any released batch." },
+              { icon: FlaskConical, title: "Third-Party Verified", text: "Every production batch is tested by independent accredited laboratories to verify purity, potency, and safety before release." },
+              { icon: ShieldCheck, title: "Regulatory Compliance", text: "Testing is conducted in accordance with applicable quality standards and specifications to help ensure product consistency and integrity." },
+              { icon: FileCheck2, title: "Complete Transparency", text: "Access batch-specific Certificates of Analysis and review the testing results for the product you purchased." },
             ].map(({ icon: Icon, title, text }) => (
               <div key={title} className="rounded-2xl border border-pink/15 p-6 bg-white">
                 <Icon className="text-pink" size={26} />

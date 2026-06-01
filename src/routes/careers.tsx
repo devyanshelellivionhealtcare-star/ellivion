@@ -14,11 +14,9 @@ export const Route = createFileRoute("/careers")({
 });
 
 const roles = [
-  { title: "Senior Formulation Chemist", dept: "R&D", location: "Mumbai" },
-  { title: "Brand Designer", dept: "Creative", location: "Remote · India" },
-  { title: "Lead Dermatology Researcher", dept: "Science", location: "Mumbai" },
-  { title: "Performance Marketing Manager", dept: "Growth", location: "Remote · Global" },
-  { title: "Customer Experience Lead", dept: "Operations", location: "Mumbai" },
+  { title: "Digital Marketing Specialist", dept: "Growth", location: "Delhi" },
+ { title: "Content Writer", dept: "Growth", location: "Delhi" },
+ 
 ];
 
 function CareersPage() {
@@ -33,11 +31,10 @@ function CareersPage() {
         <div className="relative mx-auto max-w-5xl px-6">
           <p className="text-xs uppercase tracking-[0.25em] text-pink font-semibold">Careers</p>
           <h1 className="mt-4 text-5xl md:text-7xl max-w-3xl leading-[1.02] text-balance">
-            Build beauty that <em className="italic text-pink">actually heals</em> — with us.
+           Build the<em className="italic text-pink"> future of wellness</em> — with us.
           </h1>
           <p className="mt-8 text-lg text-foreground/75 max-w-xl">
-            We're a small, ambitious team of chemists, clinicians, and creatives.
-            Different disciplines, one bar: do the most thoughtful work of your career.
+           We're a team of innovators, creators, and problem-solvers united by a passion for quality and wellbeing. Whether you're in product development, operations, marketing, design, or customer experience, you'll have the opportunity to make meaningful contributions and grow alongside a fast-evolving brand.
           </p>
         </div>
       </section>
@@ -70,9 +67,9 @@ function CareersPage() {
           <div className="mt-20 relative overflow-hidden p-12 rounded-3xl bg-gradient-vibrant text-white text-center">
             <div className="absolute -top-16 -right-16 w-64 h-64 bg-pink/60 animate-blob blur-3xl" />
             <div className="relative">
-              <h3 className="text-2xl md:text-4xl text-white">Don't see your role?</h3>
+              <h3 className="text-2xl md:text-4xl text-white">Join our journey.</h3>
               <p className="mt-3 text-white/85 max-w-md mx-auto">
-                We're always looking for exceptional people. Tell us what you'd build.
+               The perfect role may not be listed today, but exceptional talent is always welcome. We'd love to hear how you can contribute to the future of Ellivion.
               </p>
               <a href="mailto:careers@ellivion.com" className="mt-8 inline-flex px-8 py-4 rounded-full bg-pink text-white font-semibold hover:bg-pink/90 transition-colors">
                 careers@ellivion.com

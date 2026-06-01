@@ -52,11 +52,10 @@ function Home() {
               <Sparkles size={14} className="text-pink" /> New · Ayurvedic Wellness Collection 2026
             </div>
             <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl leading-[1.02] text-balance">
-              Balance that <em className="italic text-pink">heals,</em><br/>wellness that <em className="italic text-pink">cares.</em>
+              Longevity,<em className="italic text-pink"> beauty, and</em><br /> wellbeing  <em className="italic text-pink">in harmony.</em>
             </h1>
             <p className="mt-6 text-lg text-foreground/75 max-w-md leading-relaxed">
-           Ellivion is where ancient Ayurvedic wisdom meets modern nutritional science —
-              scientifically developed nutraceuticals and authentic formulations for holistic health.
+          Ellivion brings together modern wellness, timeless traditions, and sensory experiences in one destination. Our curated range includes advanced nutraceuticals, authentic skincare formulations, and premium fragrances, all created with a commitment to quality, efficacy, and wellbeing.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link to="/products" className="group inline-flex items-center gap-2 px-8 py-4 rounded-full btn-vibrant text-sm font-medium">
@@ -133,9 +132,9 @@ function Home() {
         </Reveal>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            { icon: Leaf, title: "Ayurvedic wisdom", text: "Authentic formulations rooted in timeless Ayurvedic principles for balance and vitality." , color: "from-pink/60 via-pink/40 to-pink/20"},
-            { icon: ShieldCheck, title: "Scientifically validated", text: "Every product is backed by modern nutritional science and third-party lab testing." , color: "from-navy/50 to-navy/30"},
-            { icon: Sparkles, title: "Trusted quality", text: "Batch-wise tested for ingredient accuracy, precise dosage, and absence of contaminants." , color: "from-pink/55 via-pink/35 to-pink/15"},
+            { icon: Leaf, title: "Thoughtfully Formulated", text: "Every product is carefully developed using high-quality ingredients, combining traditional knowledge with modern innovation." , color: "from-pink/60 via-pink/40 to-pink/20"},
+            { icon: ShieldCheck, title: "Science-Backed Excellence", text: "From longevity supplements to wellness solutions, our formulations are guided by research, quality standards, and proven ingredients." , color: "from-navy/50 to-navy/30"},
+            { icon: Sparkles, title: "Premium Quality", text: "Crafted with meticulous attention to purity, authenticity, and consistency to deliver an exceptional experience in every product." , color: "from-pink/55 via-pink/35 to-pink/15"},
           ].map((v, i) => (
             <Reveal key={v.title} delay={i * 120}>
               <div className={`p-8 rounded-3xl bg-gradient-to-br ${v.color} border border-border h-full hover:shadow-pink hover:-translate-y-1 transition-all duration-500`}>
@@ -161,7 +160,7 @@ function Home() {
             <div className="flex items-end justify-between flex-wrap gap-4 mb-12">
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-pink font-semibold">Bestsellers</p>
-                <h2 className="mt-3 text-4xl md:text-5xl">Loved by wellness seekers, every day.</h2>
+                <h2 className="mt-3 text-4xl md:text-5xl">Discover what our customers love most.</h2>
               </div>
               <Link to="/products" className="story-link text-sm text-navy font-medium">View all products →</Link>
             </div>
@@ -177,7 +176,7 @@ function Home() {
                     <p className="text-xs text-pink uppercase tracking-wider font-semibold">{p.category}</p>
                     <div className="mt-1 flex items-start justify-between gap-2">
                       <h3 className="text-lg text-navy leading-snug">{p.name}</h3>
-                      <span className="text-sm font-semibold text-navy">${p.price}</span>
+                      <span className="text-sm font-semibold text-navy">₹{p.price}</span>
                     </div>
                   </div>
                 </Link>
@@ -197,7 +196,7 @@ function Home() {
           <Reveal>
             <Sparkles className="mx-auto text-pink animate-float-soft" size={36} />
             <p className="mt-6 font-display text-3xl md:text-5xl leading-snug text-balance text-white">
-              "The most thoughtful wellness line I've encountered. Rooted in Ayurveda, validated by science, and beautifully made."
+              "A refined collection of wellness, beauty, and fragrance essentials for a life well lived."
             </p>
             <div className="mt-8 text-sm tracking-wider uppercase text-pink">— Wellness Today</div>
           </Reveal>
@@ -212,8 +211,8 @@ function Home() {
             <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-white/10 animate-blob blur-3xl" />
             <div className="relative grid md:grid-cols-2 gap-10 items-center">
               <div>
-                <h2 className="text-4xl md:text-5xl text-white">Join the Ellivion wellness ritual.</h2>
-                <p className="mt-4 text-white/85">Get 15% off your first order + weekly Ayurveda and wellness science from our team.</p>
+                <h2 className="text-4xl md:text-5xl text-white">Elevate your everyday with Ellivion.</h2>
+                <p className="mt-4 text-white/85">Enjoy 15% off your first order plus exclusive access to wellness, beauty, and fragrance updates.</p>
               </div>
               <form className="flex gap-3 flex-wrap" onSubmit={(e)=>e.preventDefault()}>
                 <input type="email" required placeholder="your@email.com" className="flex-1 min-w-[200px] px-6 py-4 rounded-full bg-white/15 border border-white/30 text-white placeholder:text-white/60 backdrop-blur outline-none focus:bg-white/25" />

@@ -6,24 +6,24 @@ import bgPetals from "@/assets/bg-petals.jpg";
 export const Route = createFileRoute("/media")({
   head: () => ({
     meta: [
-      { title: "Media Relations — Ellivion Healthcare" },
-      { name: "description", content: "Press releases, brand assets, and media inquiries for Ellivion Healthcare." },
+      { title: "MEDIA & PRESS — Ellivion Healthcare" },
+      { name: "description", content: "For Journalists & Partners, brand assets, and media inquiries for Ellivion Healthcare." },
     ],
   }),
   component: MediaPage,
 });
 
 const press = [
-  { outlet: "Vogue", quote: "The most thoughtful beauty + wellness line of the decade.", date: "2025" },
-  { outlet: "Allure", quote: "A masterclass in restraint and efficacy.", date: "2025" },
-  { outlet: "Elle", quote: "Ellivion is rewriting the rules of clean beauty.", date: "2024" },
-  { outlet: "Harper's Bazaar", quote: "Quietly luxurious, deeply effective.", date: "2024" },
+  { outlet: "Product Innovation", quote: "Advancing wellness through thoughtfully crafted nutraceutical, skincare, and fragrance solutions.", date: "2026" },
+  { outlet: "Quality & Transparency", quote: "Committed to rigorous quality standards, third-party testing, and customer trust.", date: "2026" },
+  { outlet: "Research & Development", quote: "Continuously exploring new formulations inspired by science and traditional wisdom.", date: "2026" },
+  { outlet: "Growing Community", quote: "Building a trusted wellness ecosystem for customers across India and beyond.", date: "2026" },
+  
 ];
 
 const releases = [
-  { title: "Ellivion closes $24M Series B led by Forerunner", date: "March 18, 2026" },
-  { title: "Spring Bloom Collection launches with three new formulas", date: "February 4, 2026" },
-  { title: "Ellivion partners with AIIMS Dermatology", date: "November 12, 2025" },
+  { title: "Looking to feature Ellivion or request additional information?", date: "May 18, 2026" },
+  
 ];
 
 function MediaPage() {
@@ -35,9 +35,10 @@ function MediaPage() {
       >
         <div className="absolute inset-0 bg-navy/65" />
         <div className="relative mx-auto max-w-5xl px-6 text-white">
-          <p className="text-xs uppercase tracking-[0.25em] text-pink font-semibold">Media Relations</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-pink font-semibold">MEDIA & PRESS</p>
           <h1 className="mt-4 text-5xl md:text-7xl max-w-3xl leading-[1.02] text-white">
-            As featured in.
+      Latest from Ellivion
+Product Innovation
           </h1>
         </div>
       </section>
@@ -58,7 +59,7 @@ function MediaPage() {
 
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-20">
         <Reveal>
-          <h2 className="text-3xl md:text-4xl mb-10">Press releases</h2>
+          <h2 className="text-3xl md:text-4xl mb-10">For Journalists & Partners</h2>
         </Reveal>
         <div className="border-t-2 border-pink/50">
           {releases.map((r, i) => (
@@ -89,8 +90,8 @@ function MediaPage() {
               <a href="#" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-pink text-white font-semibold hover:bg-pink/90 transition-colors">
                 <Download size={16} /> Download kit
               </a>
-              <a href="mailto:press@ellivion.com" className="inline-flex items-center px-7 py-3.5 rounded-full border-2 border-white/40 text-white text-sm hover:bg-white/10 transition-colors">
-                press@ellivion.com
+              <a href="mailto:media@ellivion.com" className="inline-flex items-center px-7 py-3.5 rounded-full border-2 border-white/40 text-white text-sm hover:bg-white/10 transition-colors">
+                media@ellivion.com
               </a>
             </div>
           </div>

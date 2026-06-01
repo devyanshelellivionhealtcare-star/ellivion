@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
-import p1 from "@/assets/product-1.jpg";
-import p2 from "@/assets/product-2.jpg";
-import p3 from "@/assets/product-3.jpg";
-import p4 from "@/assets/product-4.jpg";
+import p1 from "@/assets/product-1.png";
+import p2 from "@/assets/product-2.png";
+import p3 from "@/assets/product-3.png";
+import p4 from "@/assets/product-4.png";
 import bgBlossom from "@/assets/bg-blossom.jpg";
-
+import p5 from "@/assets/liposomal.png";
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
@@ -17,12 +17,12 @@ export const Route = createFileRoute("/blog")({
 });
 
 const posts = [
-  { title: "Understanding Ashwagandha: the adaptogen deep-dive", excerpt: "What KSM-66 is, how it works, and why modern science backs this ancient herb.", date: "March 2026", read: "7 min", image: p1, tag: "Ayurveda" },
-  { title: "The science behind third-party testing", excerpt: "Why independent lab validation matters for nutraceuticals and how to read a COA.", date: "Feb 2026", read: "8 min", image: p2, tag: "Science" },
-  { title: "Building an Ayurvedic daily routine", excerpt: "Simple, sustainable Dinacharya practices for balance, digestion, and energy.", date: "Feb 2026", read: "6 min", image: p3, tag: "Ritual" },
-  { title: "Triphala decoded: three fruits, one powerful formula", excerpt: "How Amalaki, Bibhitaki, and Haritaki work together for gut health.", date: "Jan 2026", read: "5 min", image: p4, tag: "Ingredient" },
-  { title: "Nutraceuticals vs. pharmaceuticals", excerpt: "Understanding preventive wellness and when supplementation makes sense.", date: "Jan 2026", read: "9 min", image: p1, tag: "Wellness" },
-  { title: "Turmeric and curcumin: from kitchen to clinic", excerpt: "Inside the research on curcumin's anti-inflammatory and antioxidant potential.", date: "Dec 2025", read: "7 min", image: p2, tag: "Science" },
+  { title: "NMN:What It Is and Why It's Gaining Attention", excerpt: "Understanding cellular energy, NAD+ support, and healthy aging.", date: "March 2026", read: "7 min", image: p1, tag: "Ayurveda" },
+  { title: "Kumkumadi Oil:A Timeless Beauty Ritual", excerpt: "Discover the ingredients, heritage, and benefits behind this iconic formulation.", date: "Feb 2026", read: "8 min", image: p2, tag: "Skincare" },
+  { title: "The Art of Attars: Fragrance Traditions That Endure", excerpt: "Exploring the history, craftsmanship, and cultural significance of attars.", date: "Feb 2026", read: "6 min", image: p3, tag: "Fragrances" },
+  { title: "Aloe vera & Turmeric Soap", excerpt: "How Amalaki, Bibhitaki, and Haritaki work together for gut health.", date: "Jan 2026", read: "5 min", image: p4, tag: "Skincare" },
+  { title: "Glutathione", excerpt: "Discover the ingredients, heritage, and benefits behind this iconic formulation.", date: "Jan 2026", read: "9 min", image: p5, tag: "Wellness" },
+ 
 ];
 
 function BlogPage() {
@@ -34,8 +34,8 @@ function BlogPage() {
       >
         <div className="absolute inset-0 bg-white/55" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
-          <p className="text-xs uppercase tracking-[0.25em] text-pink font-semibold">Journal</p>
-          <h1 className="mt-4 text-5xl md:text-7xl max-w-3xl leading-[1.02]">Notes from <em className="italic text-pink">the lab.</em></h1>
+          <p className="text-xs uppercase tracking-[0.25em] text-pink font-semibold">INSIGHTS</p>
+          <h1 className="mt-4 text-5xl md:text-7xl max-w-3xl leading-[1.02]">Wellness <em className="italic text-pink">decoded.</em></h1>
         </div>
       </section>
 

@@ -53,22 +53,15 @@ class PressRelease(BaseModel):
 
 # ---------- In-memory data ----------
 PRODUCTS: List[Product] = [
-    Product(id=1, name="Rose Glow Serum", category="Treatment", price=68,
+    Product(id=1, name="NMN", category="Nutraceutical", price=1500,
             desc="Vitamin C + niacinamide for an even, luminous glow."),
-    Product(id=2, name="Velvet Repair Cream", category="Moisturizer", price=54,
+    Product(id=2, name="Kumkumadi Tailam", category="Daily Care", price=3000,
             desc="Ceramide-rich barrier repair for soft, plump skin."),
-    Product(id=3, name="Petal Cleanser", category="Cleanser", price=32,
+    Product(id=3, name="Attar", category="Daily Care", price=2100,
             desc="Gentle gel-to-foam wash with rose & chamomile."),
-    Product(id=4, name="Botanical Face Oil", category="Treatment", price=72,
+    Product(id=4, name="Aloe vera & Turmeric Soap", category="Daily Care", price=285,
             desc="Cold-pressed squalane and rosehip for overnight nourishment."),
-    Product(id=5, name="Hydra Bloom Mist", category="Toner", price=38,
-            desc="Hyaluronic acid mist with rose water."),
-    Product(id=6, name="Bright Eye Balm", category="Eye Care", price=46,
-            desc="Caffeine and peptides for de-puffed, brighter eyes."),
-    Product(id=7, name="Wellness Multivitamin", category="Wellness", price=42,
-            desc="Daily skin + hair + nails support."),
-    Product(id=8, name="Collagen Boost Drink", category="Wellness", price=56,
-            desc="Marine collagen peptides with rose hip and vitamin C."),
+  
 ]
 
 ROLES: List[Role] = [

@@ -13,7 +13,7 @@ export function SiteFooter() {
             <img src={logo} alt="Ellivion Healthcare" className="h-12 w-auto" />
           </div>
           <p className="mt-6 text-white/85 leading-relaxed">
-           Ellivion Healthcare Private Limited develops high-quality nutraceutical and Ayurvedic products— blending ancient wisdom with modern science for holistic wellness you can trust.
+           Ellivion Healthcare Private Limited is dedicated to crafting exceptional wellness, beauty, and fragrance experiences—bringing together quality, innovation, and timeless traditions.
           </p>
           <div className="mt-6 flex gap-3">
             {[Instagram, Twitter, Facebook, Mail].map((Icon, i) => (

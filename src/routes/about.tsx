@@ -5,7 +5,7 @@ import bgLab from "@/assets/bg-lab.jpg";
 import bgBlossom from "@/assets/bg-blossom.jpg";
 import hero from "@/assets/hero-ellivion.png";
 import praveensir from "@/assets/praveensir.png";
-
+import devyanssir from "@/assets/devyans.jpeg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
@@ -26,8 +26,9 @@ function AboutPage() {
   };
 
   const directors: TeamMember[] = [
-    { name: "Devyansh Chandel", role: "Director", initial: "DC", bio: "Brings valuable expertise from the pharmaceutical sector, guiding product development with deep understanding of ingredient efficacy, product consistency, and consumer safety." },
-    { name: "Praveen Bahri", role: "Director", initial: "PB", bio: "Brings valuable expertise from the information technology sector, enabling operational excellence, market insight, and a balanced approach to wellness innovation.", image: praveensir },
+     { name: "Praveen Bahri", role: "Director", initial: "PB", bio: "Brings valuable expertise from the pharmaceutical sector, guiding product development with deep understanding of ingredient efficacy, product consistency, and consumer safety.", image: praveensir },
+    { name: "Devyansh Chandel", role: "Director", initial: "DC", bio: "Brings valuable expertise from the information technology sector, enabling operational excellence, market insight, and a balanced approach to wellness innovation.", image: devyanssir },
+   
   ];
 
   const advisors: TeamMember[] = [
@@ -69,7 +70,7 @@ function AboutPage() {
           <h2 className="text-4xl md:text-5xl">Our <em className="italic text-pink">mission.</em></h2>
           <div className="mt-10 space-y-8">
             {[
-              { icon: Leaf, t: "Ayurvedic wisdom", d: "Rooted in the timeless principles of Ayurveda, we create authentic formulations that promote balance, vitality, and long-term wellness." },
+              { icon: Leaf, t: "Thoughtfully Formulated", d: "Rooted in the timeless principles of Ayurveda, we create authentic formulations that promote balance, vitality, and long-term wellness." },
               { icon: FlaskConical, t: "Modern nutritional science", d: "Strengthened by contemporary scientific research, every product is designed for efficacy, purity, and safety." },
               { icon: ShieldCheck, t: "Quality & transparency", d: "We maintain rigorous quality standards, responsible sourcing, and continuous innovation — ensuring health solutions you can trust." },
             ].map((x, i) => (
@@ -133,7 +134,7 @@ function AboutPage() {
             { k: "100%", v: "Quality & purity commitment" },
           ].map((s) => (
             <Reveal key={s.k}>
-              <div className="font-display text-5xl md:text-7xl text-pink">{s.k}</div>
+              <div className="font-display text-5xl md:text-7xl text-white">{s.k}</div>
               <div className="mt-3 text-sm text-white/80 uppercase tracking-wider">{s.v}</div>
             </Reveal>
           ))}
