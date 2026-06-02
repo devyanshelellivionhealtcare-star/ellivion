@@ -198,7 +198,7 @@ function Home() {
             <p className="mt-6 font-display text-3xl md:text-5xl leading-snug text-balance text-white">
               "A refined collection of wellness, beauty, and fragrance essentials for a life well lived."
             </p>
-            <div className="mt-8 text-sm tracking-wider uppercase text-pink">— Wellness Today</div>
+         
           </Reveal>
         </div>
       </section>
