@@ -15,10 +15,10 @@ export const Route = createFileRoute("/products")({
   component: ProductsPage,
 });
 
-const categories = ["All", "Ayurvedic", "Nutraceutical", "Immunity", "Wellness", "Daily Care"] as const;
+const categories = ["All", "Wellness", "Longevity", "Beauty", "Fragrance"];
 
 function ProductsPage() {
-  const [filter, setFilter] = useState<(typeof categories)[number]>("All");
+  const [filter, setFilter] = useState<string>("All");
   const filtered = filter === "All" ? products : products.filter(p => p.category === filter);
 
   return (
@@ -30,9 +30,9 @@ function ProductsPage() {
         <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(246,34,147,0.3), rgba(255,255,255,0.6))" }} />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <p className="text-xs uppercase tracking-[0.25em] text-white font-semibold">Collection</p>
-          <h1 className="mt-4 text-5xl md:text-7xl max-w-3xl leading-[1.02] text-white">The complete <em className="italic text-white">wellness</em> ritual.</h1>
+          <h1 className="mt-4 text-5xl md:text-7xl max-w-3xl leading-[1.02] text-white">Discover the world of <em className="italic text-white">Ellivion</em> </h1>
           <p className="mt-6 text-white text-foreground/75 max-w-xl text-lg">
-            Each Ellivion formula is the result of Thoughtfully Formulated, modern nutritional science, rigorous testing, and a refusal to compromise.
+          From wellness supplements and longevity solutions to traditional beauty formulations and fine fragrances, explore products thoughtfully crafted to enrich everyday living.
           </p>
         </div>
       </section>
