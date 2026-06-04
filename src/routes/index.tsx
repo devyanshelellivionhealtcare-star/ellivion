@@ -1,227 +1,363 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles, Leaf, ShieldCheck, HeartPulse, Star } from "lucide-react";
-import { useState, useEffect } from "react";
-import bgBlossom from "@/assets/bg-blossom.jpg";
-import bgFlatlay from "@/assets/bg-flatlay.jpg";
-import bgPetals from "@/assets/bg-petals.jpg";
+import { createFileRoute } from "@tanstack/react-router";
+import {
+  ArrowRight,
+  Leaf,
+  ShieldCheck,
+  Sparkles,
+  Star,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { useEffect, useState } from "react";
 import { products } from "@/data/products";
 import { Reveal } from "@/components/Reveal";
+import hero1 from "@/assets/hero1.png";
+import hero2 from "@/assets/hero2.png";
+import hero4 from "@/assets/hero4.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ellivion Healthcare — Beauty meets Wellness" },
-      { name: "description", content: "Vibrant healthcare and beauty products by Ellivion — dermatologist-formulated for glowing skin and joyful wellness." },
+      { title: "Ellivion — Timeless Beauty & Conscious Wellness" },
+      {
+        name: "description",
+        content: "Dermatologist-crafted Wellness rituals for radiant skin and graceful longevity.",
+      },
     ],
   }),
   component: Home,
 });
 
+type Slide = {
+  image: string;
+  tint: string;
+};
+
+const slides: Slide[] = [
+  {
+    image: hero1,
+    tint: "#e8d4e8",
+  },
+  {
+    image: hero2,
+    tint: "#d8c4e8",
+  },
+  {
+    image: hero4,
+    tint: "#e8d4e8",
+  },
+];
+
 function Home() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [idx, setIdx] = useState(0);
+  const slide = slides[idx];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % products.length);
-    }, 3000);
-    return () => clearInterval(interval);
+    const t = setInterval(() => setIdx((i) => (i + 1) % slides.length), 5000);
+    return () => clearInterval(t);
   }, []);
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % products.length);
-  };
-
   return (
-    <div>
-      {/* HERO */}
-      <section
-        className="relative overflow-hidden"
-        style={{ backgroundImage: `url(${bgBlossom})`, backgroundSize: "cover", backgroundPosition: "center" }}
+    <div className="min-h-screen bg-background text-foreground">
+      {/* HERO - Full Background Image Carousel */}
+      {/* <section
+        className="relative min-h-[calc(100svh-5rem)] lg:min-h-[calc(100vh-5rem)] flex items-center overflow-hidden transition-all duration-[1200ms]"
+        style={{
+          backgroundColor: slide.tint,
+        }}
       >
-        <div className="absolute inset-0 bg-gradient-hero/60" style={{ background: "linear-gradient(135deg, rgba(246,34,147,0.8), rgba(255,255,255,0.4) 50%, rgba(246,34,147,0.5))" }} />
-        <div className="absolute -top-20 -left-20 w-96 h-96 bg-pink/50 animate-blob blur-3xl" />
-        <div className="absolute top-40 -right-20 w-[28rem] h-[28rem] bg-pink/30 animate-blob blur-3xl" />
+        <img
+          src={slide.image}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-[1200ms] md:object-cover"
+        />
 
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-16 pb-24 lg:pt-24 lg:pb-32 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="animate-fade-up">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 backdrop-blur border-2 border-pink text-xs text-navy font-medium shadow-pink">
-              <Sparkles size={14} className="text-pink" /> New · Ayurvedic Wellness Collection 2026
+     
+        <div className="absolute inset-0 bg-black/10 md:bg-black/20" />
+
+       
+        <div className="absolute bottom-5 sm:bottom-8 lg:bottom-12 left-0 right-0 px-4 sm:px-6 lg:px-10 z-20">
+          <div className="mx-auto max-w-[1600px] flex items-end justify-center sm:justify-between">
+            <div className="hidden md:flex flex-col gap-1 text-[10px] uppercase tracking-[0.3em] text-white/70">
+              <span>Scroll</span>
+              <div className="w-px h-10 bg-white/30 mt-1" />
             </div>
-            <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl leading-[1.02] text-balance">
-              Longevity,<em className="italic text-pink"> beauty, and</em><br /> wellbeing  <em className="italic text-pink">in harmony.</em>
-            </h1>
-            <p className="mt-6 text-lg text-foreground/75 max-w-md leading-relaxed">
-          Ellivion brings together modern wellness, timeless traditions, and sensory experiences in one destination. Our curated range includes advanced nutraceuticals, authentic skincare formulations, and premium fragrances, all created with a commitment to quality, efficacy, and wellbeing.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/products" className="group inline-flex items-center gap-2 px-8 py-4 rounded-full btn-vibrant text-sm font-medium">
-                Explore products
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link to="/about" className="inline-flex items-center px-8 py-4 rounded-full border-2 border-navy/20 text-navy text-sm font-medium hover:bg-navy hover:text-white transition-colors">
-                Our story
-              </Link>
-            </div>
-            <div className="mt-12 flex items-center gap-10 text-xs text-foreground/70">
-              <div><div className="font-display text-3xl text-navy">120k+</div>radiant customers</div>
-              <div><div className="font-display text-3xl text-navy">4.9★</div>average rating</div>
-              <div><div className="font-display text-3xl text-navy">98%</div>recommend</div>
-            </div>
-          </div>
-          <div className="relative animate-scale-in delay-200">
-            <div className="absolute -inset-8 bg-gradient-pink rounded-[3rem] blur-3xl opacity-90 animate-float-slow" />
-            <div className="relative rounded-[2.5rem] shadow-elegant overflow-hidden">
-              <img src={products[currentIndex].image} alt={products[currentIndex].name} className="relative rounded-[2.5rem] shadow-elegant w-full object-cover aspect-[4/5]" />
-              <button onClick={handlePrev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 z-10 transition-colors">
-                <ArrowRight size={20} className="text-navy rotate-180" />
-              </button>
-              <button onClick={handleNext} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 z-10 transition-colors">
-                <ArrowRight size={20} className="text-navy" />
-              </button>
-            </div>
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-pink animate-float-soft">
-              <div className="flex items-center gap-2 text-navy">
-                <HeartPulse size={20} className="text-pink" />
-                <div>
-                  <div className="text-xs text-muted-foreground">Dermatologist</div>
-                  <div className="text-sm font-semibold">Approved formulas</div>
-                </div>
+            <div className="flex items-center gap-3 sm:gap-6 rounded-full bg-black/15 px-4 py-3 backdrop-blur-sm sm:bg-transparent sm:p-0 sm:backdrop-blur-0">
+              <div className="flex gap-2">
+                {slides.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setIdx(i)}
+                    className={`h-px transition-all duration-500 ${i === idx ? "w-12 bg-white" : "w-6 bg-white/40"}`}
+                  />
+                ))}
               </div>
-            </div>
-            <div className="absolute -top-4 -right-4 bg-navy text-white rounded-2xl px-4 py-3 shadow-elegant animate-float-soft delay-300">
-              <div className="text-2xl font-display">4.9</div>
-              <div className="flex gap-0.5">{Array.from({length:5}).map((_,i)=><Star key={i} size={10} className="fill-pink text-pink"/>)}</div>
-            </div>
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-              {products.map((_, i) => (
+              <span className="text-[11px] tracking-[0.2em] text-white/70 tabular-nums">
+                {String(idx + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
+              </span>
+              <div className="hidden sm:flex gap-2 ml-2 text-white">
                 <button
-                  key={i}
-                  onClick={() => setCurrentIndex(i)}
-                  className={`w-2 h-2 rounded-full transition-all ${i === currentIndex ? "bg-navy w-6" : "bg-navy/40 hover:bg-navy/60"}`}
-                />
-              ))}
+                  onClick={() => setIdx((i) => (i - 1 + slides.length) % slides.length)}
+                  className="w-10 h-10 rounded-full border border-white/40 flex items-center justify-center hover:bg-white hover:text-black transition"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setIdx((i) => (i + 1) % slides.length)}
+                  className="w-10 h-10 rounded-full border border-white/40 flex items-center justify-center hover:bg-white hover:text-black transition"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+{/* HERO */}
+<section className="relative w-full overflow-hidden bg-transparent">
+  <div className="relative w-full">
+    {/* Banner Image */}
+    <img
+      src={slide.image}
+      alt=""
+      aria-hidden="true"
+      className="block w-full h-auto"
+    />
 
+    {/* Slider Controls */}
+    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
+      <div className="flex items-center gap-4 rounded-full bg-black/15 backdrop-blur-md px-4 py-3">
+{/*        
+        <div className="flex gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIdx(i)}
+              className={`h-[2px] transition-all duration-300 ${
+                i === idx
+                  ? "w-12 bg-white"
+                  : "w-6 bg-white/40"
+              }`}
+            />
+          ))}
+        </div> */}
+
+       
+        {/* <div className="flex gap-2">
+          <button
+            onClick={() =>
+              setIdx((i) => (i - 1 + slides.length) % slides.length)
+            }
+            className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center text-white"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={() => setIdx((i) => (i + 1) % slides.length)}
+            className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center text-white"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div> */}
+      </div>
+    </div>
+  </div>
+</section>
       {/* MARQUEE */}
-      <section className="bg-navy text-white py-6 overflow-hidden">
-        <div className="flex gap-12 animate-marquee whitespace-nowrap font-display text-2xl">
-          {Array.from({length:2}).map((_, k) => (
-            <div key={k} className="flex gap-12 items-center shrink-0">
-              {["Glow", "•", "Heal", "•", "Bloom", "•", "Care", "•", "Radiance", "•", "Wellness", "•", "Beauty", "•",  "Nourish", "•",  "Revive", "•",].map((t, i) => (
-                <span key={`${k}-${i}`} className={`${t === "•" ? "text-pink" : "italic"} inline-block`}>{t}</span>
-              ))}
+      <section className="py-5 sm:py-8 border-y border-border/60 overflow-hidden bg-background">
+        <div className="flex whitespace-nowrap animate-marquee">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div
+              key={i}
+              className="flex items-center font-display text-2xl sm:text-3xl md:text-4xl text-ink/80 italic"
+            >
+              {["Glow", "Heal", "Bloom", "Radiate", "Nourish", "Awaken", "Balance", "Elevate"].map(
+                (w) => (
+                  <span key={w} className="px-5 sm:px-10 flex items-center gap-5 sm:gap-10">
+                    {w}
+                    <span className="text-gold not-italic">✦</span>
+                  </span>
+                ),
+              )}
             </div>
           ))}
         </div>
       </section>
 
-      {/* VALUES */}
-      <section className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24">
-        <Reveal>
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-xs uppercase tracking-[0.25em] text-pink font-semibold">Why Ellivion</p>
-            <h2 className="mt-4 text-4xl md:text-5xl">A new standard in beauty + health.</h2>
-          </div>
-        </Reveal>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { icon: Leaf, title: "Thoughtfully Formulated", text: "Every product is carefully developed using high-quality ingredients, combining traditional knowledge with modern innovation." , color: "from-pink/60 via-pink/40 to-pink/20"},
-            { icon: ShieldCheck, title: "Science-Backed Excellence", text: "From longevity supplements to wellness solutions, our formulations are guided by research, quality standards, and proven ingredients." , color: "from-navy/50 to-navy/30"},
-            { icon: Sparkles, title: "Premium Quality", text: "Crafted with meticulous attention to purity, authenticity, and consistency to deliver an exceptional experience in every product." , color: "from-pink/55 via-pink/35 to-pink/15"},
-          ].map((v, i) => (
-            <Reveal key={v.title} delay={i * 120}>
-              <div className={`p-8 rounded-3xl bg-gradient-to-br ${v.color} border border-border h-full hover:shadow-pink hover:-translate-y-1 transition-all duration-500`}>
-                <div className="w-14 h-14 rounded-2xl bg-white grid place-items-center shadow-soft">
-                  <v.icon className="text-pink" size={26} />
-                </div>
-                <h3 className="mt-6 text-2xl">{v.title}</h3>
-                <p className="mt-3 text-foreground/70">{v.text}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* PRODUCTS with background image */}
-      <section
-        className="relative py-24"
-        style={{ backgroundImage: `url(${bgFlatlay})`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed" }}
-      >
-        <div className="absolute inset-0 bg-white/85 backdrop-blur-sm" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+      {/* ESSENCE */}
+      <section id="essence" className="py-20 sm:py-28 lg:py-48">
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
           <Reveal>
-            <div className="flex items-end justify-between flex-wrap gap-4 mb-12">
-              <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-pink font-semibold">Bestsellers</p>
-                <h2 className="mt-3 text-4xl md:text-5xl">Discover what our customers love most.</h2>
+            <div className="grid lg:grid-cols-12 gap-8 sm:gap-12 mb-14 sm:mb-20 lg:mb-24">
+              <div className="lg:col-span-5">
+                <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-6">
+                  — Our Essence
+                </p>
+                <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] sm:leading-[1] text-balance">
+                  Thoughtful rituals that honor both <em className="text-gold">science</em> and{" "}
+                  <em>soul.</em>
+                </h2>
               </div>
-              <Link to="/products" className="story-link text-sm text-navy font-medium">View all products →</Link>
+              <div className="lg:col-span-5 lg:col-start-8 self-end">
+                <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+                  Three quiet commitments shape every formula we make — to the earth that gives, the
+                  body that receives, and the moment in between.
+                </p>
+              </div>
             </div>
           </Reveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.slice(0, 4).map((p, i) => (
-              <Reveal key={p.id} delay={i * 100}>
-                <Link to="/products" className="group block bg-white rounded-3xl p-4 hover:shadow-pink transition-all duration-500 hover:-translate-y-2">
-                  <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-blush">
-                    <img src={p.image} alt={p.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+
+          <div className="grid md:grid-cols-3 gap-px bg-border">
+            {[
+              {
+                icon: Leaf,
+                n: "01",
+                t: "Conscious Formulation",
+                d: "Pure botanicals and time-honored Wellness actives, ethically sourced.",
+              },
+              {
+                icon: ShieldCheck,
+                n: "02",
+                t: "Clinically Inspired",
+                d: "Dermatologist-developed and backed by research.",
+              },
+              {
+                icon: Sparkles,
+                n: "03",
+                t: "Sensory Luxury",
+                d: "Every jar and drop designed to slow the day — a small ceremony.",
+              },
+            ].map((v, i) => (
+              <Reveal key={v.n} delay={i * 120}>
+                <div className="bg-background p-6 sm:p-10 lg:p-14 h-full flex flex-col">
+                  <div className="flex items-start justify-between mb-8 sm:mb-12">
+                    <v.icon className="w-6 h-6 sm:w-7 sm:h-7 text-gold" strokeWidth={1.2} />
+                    <span className="font-display text-xl sm:text-2xl text-ink/30">{v.n}</span>
                   </div>
-                  <div className="mt-4 px-2 pb-2">
-                    <p className="text-xs text-pink uppercase tracking-wider font-semibold">{p.category}</p>
-                    <div className="mt-1 flex items-start justify-between gap-2">
-                      <h3 className="text-lg text-navy leading-snug">{p.name}</h3>
-                      <span className="text-sm font-semibold text-navy">₹{p.price}</span>
-                    </div>
-                  </div>
-                </Link>
+                  <h3 className="font-display text-2xl sm:text-3xl mb-3 sm:mb-4">{v.t}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{v.d}</p>
+                </div>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* QUOTE on petals background */}
-      <section
-        className="relative py-32"
-        style={{ backgroundImage: `url(${bgPetals})`, backgroundSize: "cover", backgroundPosition: "center" }}
-      >
-        <div className="absolute inset-0 bg-navy/75" />
-        <div className="relative mx-auto max-w-4xl px-6 text-center text-white">
+      {/* RITUALS / BESTSELLERS */}
+      <section id="rituals" className="py-20 sm:py-28 lg:py-32 bg-secondary/40">
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
           <Reveal>
-            <Sparkles className="mx-auto text-pink animate-float-soft" size={36} />
-            <p className="mt-6 font-display text-3xl md:text-5xl leading-snug text-balance text-white">
-              "A refined collection of wellness, beauty, and fragrance essentials for a life well lived."
-            </p>
-         
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16 lg:mb-20">
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-6">
+                  — Signature Rituals
+                </p>
+                <h2 className="font-display text-4xl sm:text-5xl md:text-6xl leading-[1.05] sm:leading-[1]">
+                  Loved by those who know <br className="hidden sm:block" />
+                  <em className="text-gold">beauty from within.</em>
+                </h2>
+              </div>
+              <a
+                href="#shop"
+                className="group inline-flex items-center gap-3 text-[12px] uppercase tracking-[0.22em] border-b border-foreground/40 pb-1.5 hover:border-foreground transition"
+              >
+                Explore all
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 lg:gap-8">
+            {products.map((p, i) => (
+              <Reveal key={p.id} delay={i * 100}>
+                <a href="#" className="group block">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-background rounded-sm">
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                    />
+                    {p.bestseller && (
+                      <span className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.2em] bg-background/80 backdrop-blur px-3 py-1.5">
+                        Bestseller
+                      </span>
+                    )}
+                  </div>
+                  <div className="mt-4 sm:mt-5 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                    <div className="min-w-0">
+                      <p className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground mb-2">
+                        {p.category}
+                      </p>
+                      <h3 className="font-display text-xl sm:text-2xl leading-tight">{p.name}</h3>
+                    </div>
+                    <span className="font-display text-lg sm:text-xl tabular-nums shrink-0">
+                      ₹{p.price.toLocaleString()}
+                    </span>
+                  </div>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* QUOTE */}
+      <section className="py-20 sm:py-28 lg:py-48 bg-background relative overflow-hidden">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center relative">
+          <Reveal>
+            <div className="flex justify-center gap-1 mb-6 sm:mb-10">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-gold text-gold" />
+              ))}
+            </div>
+            <blockquote className="font-display text-2xl sm:text-3xl md:text-5xl leading-[1.18] sm:leading-[1.15] text-balance italic text-ink">
+              "A refined sanctuary of wellness — where beauty is not merely seen, but deeply felt."
+            </blockquote>
+            
+           
           </Reveal>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="mx-auto max-w-6xl px-6 py-24">
-        <Reveal>
-          <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-vibrant p-12 md:p-20 text-white">
-            <div className="absolute -top-16 -right-16 w-80 h-80 bg-pink/40 animate-blob blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-white/10 animate-blob blur-3xl" />
-            <div className="relative grid md:grid-cols-2 gap-10 items-center">
-              <div>
-                <h2 className="text-4xl md:text-5xl text-white">Elevate your everyday with Ellivion.</h2>
-                <p className="mt-4 text-white/85">Enjoy 15% off your first order plus exclusive access to wellness, beauty, and fragrance updates.</p>
-              </div>
-              <form className="flex gap-3 flex-wrap" onSubmit={(e)=>e.preventDefault()}>
-                <input type="email" required placeholder="your@email.com" className="flex-1 min-w-[200px] px-6 py-4 rounded-full bg-white/15 border border-white/30 text-white placeholder:text-white/60 backdrop-blur outline-none focus:bg-white/25" />
-                <button className="px-8 py-4 rounded-full bg-pink text-white font-semibold hover:bg-pink/90 transition-colors">Subscribe</button>
-              </form>
-            </div>
-          </div>
-        </Reveal>
+      <section className="py-20 sm:py-28 lg:py-32 bg-ink text-background bg-[#ef7979]">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+          <Reveal>
+            <p className="text-[11px] uppercase tracking-[0.3em] text-background/50 mb-8">
+              — Join the Circle
+            </p>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-7xl leading-[1.05] sm:leading-[1] text-balance text-white">
+              Begin your <em className="text-gold">ritual.</em>
+            </h2>
+            <p className="mt-6 sm:mt-8 text-base sm:text-lg text-background/70 leading-relaxed max-w-xl mx-auto">
+              Receive 15% off your first order and quiet, monthly letters on the art of conscious
+              beauty.
+            </p>
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="mt-12 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
+            >
+              <input
+                type="email"
+                placeholder="your@email.com"
+                className="w-full min-w-0 flex-1 px-6 py-4 rounded-full bg-background/5 border border-background/15 focus:border-background/40 outline-none transition placeholder:text-background/40 text-background"
+              />
+              <button className="group w-full sm:w-auto px-8 py-4 rounded-full bg-background text-ink text-[12px] uppercase tracking-[0.22em] hover:bg-gold transition flex items-center justify-center gap-2 bg-white text-black">
+                Join
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </button>
+            </form>
+            <p className="mt-6 text-xs text-background/40 tracking-wide">
+              Zero spam. Only soul-nourishing updates.
+            </p>
+          </Reveal>
+        </div>
       </section>
     </div>
   );
 }
+
+export default Home;

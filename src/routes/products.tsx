@@ -9,7 +9,7 @@ export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
       { title: "Products — Ellivion Healthcare" },
-      { name: "description", content: "Shop high-quality nutraceutical and Ayurvedic wellness products by Ellivion Healthcare — tested for purity, potency, and safety." },
+      { name: "description", content: "Shop high-quality nutraceutical wellness products by Ellivion Healthcare — tested for purity, potency, and safety." },
     ],
   }),
   component: ProductsPage,
