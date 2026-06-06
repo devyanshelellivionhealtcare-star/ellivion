@@ -14,9 +14,11 @@ export const Route = createFileRoute("/careers")({
 });
 
 const roles = [
-  { title: "Digital Marketing Specialist", dept: "Growth", location: "Delhi" },
- { title: "Content Writer", dept: "Growth", location: "Delhi" },
- 
+  { title: "Digital Marketing Specialist", dept: "Growth", location: "Delhi", description: "Drive digital campaigns, content strategy, and brand visibility across channels." },
+  { title: "Content Writer", dept: "Growth", location: "Delhi", description: "Create compelling, research-backed content for wellness, health, and brand storytelling." },
+   { title: "Sales Associate", dept: "Growth", location: "Delhi", description: "Create compelling, research-backed content for wellness, health, and brand storytelling." },
+ { title: "Customer Service Representative", dept: "Growth", location: "Delhi", description: "Create compelling, research-backed content for wellness, health, and brand storytelling." },
+
 ];
 
 function CareersPage() {
@@ -46,16 +48,17 @@ function CareersPage() {
         <div className="border-t-2 border-pink/30">
           {roles.map((r, i) => (
             <Reveal key={r.title} delay={i * 60}>
-              <a href="#" className="group flex items-center justify-between py-7 border-b-2 border-pink/20 hover:bg-pink/5 transition-colors px-2 rounded-lg">
-                <div>
+              <a href="mailto:hr@ellivion.com" className="group flex items-center justify-between py-7 border-b-2 border-pink/20 hover:bg-pink/5 transition-colors px-2 rounded-lg">
+                <div className="flex-1">
                   <h3 className="text-xl md:text-2xl group-hover:text-pink transition-colors">{r.title}</h3>
                   <div className="mt-2 flex gap-4 text-sm text-foreground/60">
                     <span>{r.dept}</span>
                     <span>·</span>
                     <span>{r.location}</span>
                   </div>
+                  <p className="mt-3 text-sm text-foreground/70">{r.description}</p>
                 </div>
-                <div className="w-12 h-12 rounded-full bg-pink/10 grid place-items-center group-hover:bg-pink group-hover:text-white transition-all">
+                <div className="w-12 h-12 rounded-full bg-pink/10 grid place-items-center group-hover:bg-pink group-hover:text-white transition-all shrink-0 ml-4">
                   <ArrowUpRight className="group-hover:rotate-45 transition-transform duration-300" />
                 </div>
               </a>

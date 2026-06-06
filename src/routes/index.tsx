@@ -122,45 +122,46 @@ function Home() {
       src={slide.image}
       alt=""
       aria-hidden="true"
-      className="block w-full h-auto"
+      className="block w-full !h-auto sm:!h-96 md:!h-[500px] lg:!h-[80vh] object-contain sm:object-cover bg-gradient-to-b from-pink/20 to-pink/10"
+      // className="block w-full h-80 sm:h-96 md:h-[500px] lg:h-[80vh] object-contain sm:object-cover bg-gradient-to-b from-pink/20 to-pink/10"
     />
 
     {/* Slider Controls */}
-    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
-      <div className="flex items-center gap-4 rounded-full bg-black/15 backdrop-blur-md px-4 py-3">
-{/*        
-        <div className="flex gap-2">
+    <div className="absolute bottom-1.5 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 w-full px-2">
+      <div className="flex items-center justify-center gap-1 sm:gap-4 rounded-full bg-black/15 backdrop-blur-md px-2 sm:px-4 py-1.5 sm:py-3 max-w-fit mx-auto">
+       
+        <div className="flex gap-1 sm:gap-2">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => setIdx(i)}
-              className={`h-[2px] transition-all duration-300 ${
+              className={`h-[1.5px] sm:h-[2px] transition-all duration-300 ${
                 i === idx
-                  ? "w-12 bg-white"
-                  : "w-6 bg-white/40"
+                  ? "w-5 sm:w-12 bg-white"
+                  : "w-3 sm:w-6 bg-white/40"
               }`}
             />
           ))}
-        </div> */}
+        </div> 
 
        
-        {/* <div className="flex gap-2">
+      <div className="flex gap-0.5 sm:gap-2 ml-1 sm:ml-2">
           <button
             onClick={() =>
               setIdx((i) => (i - 1 + slides.length) % slides.length)
             }
-            className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center text-white"
+            className="w-5 h-5 sm:w-8 sm:h-8 rounded-full border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-black transition"
           >
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
           </button>
 
           <button
             onClick={() => setIdx((i) => (i + 1) % slides.length)}
-            className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center text-white"
+            className="w-5 h-5 sm:w-8 sm:h-8 rounded-full border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-black transition"
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
           </button>
-        </div> */}
+        </div> 
       </div>
     </div>
   </div>
@@ -193,11 +194,11 @@ function Home() {
             <div className="grid lg:grid-cols-12 gap-8 sm:gap-12 mb-14 sm:mb-20 lg:mb-24">
               <div className="lg:col-span-5">
                 <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-6">
-                  — Our Essence
+                  — OUR PHILOSOPHY
                 </p>
-                <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] sm:leading-[1] text-balance">
-                  Thoughtful rituals that honor both <em className="text-gold">science</em> and{" "}
-                  <em>soul.</em>
+                <h2 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] sm:leading-[1] text-balance">
+                Intelligent nutrition for timeless <em className="text-gold">vitality </em> and{" "}
+                  <em>elevated living.</em>
                 </h2>
               </div>
               <div className="lg:col-span-5 lg:col-start-8 self-end">
@@ -214,20 +215,20 @@ function Home() {
               {
                 icon: Leaf,
                 n: "01",
-                t: "Conscious Formulation",
-                d: "Pure botanicals and time-honored Wellness actives, ethically sourced.",
+                t: "Thoughtfully Formulated",
+                d: "Every product is carefully developed using high-quality ingredients, combining traditional knowledge with modern innovation.",
               },
               {
                 icon: ShieldCheck,
                 n: "02",
-                t: "Clinically Inspired",
-                d: "Dermatologist-developed and backed by research.",
+                t: "Science-Backed Excellence",
+                d: "From longevity supplements to wellness solutions, our formulations are guided by research, quality standards, and proven ingredients.",
               },
               {
                 icon: Sparkles,
                 n: "03",
-                t: "Sensory Luxury",
-                d: "Every jar and drop designed to slow the day — a small ceremony.",
+                t: "Premium Quality",
+                d: "Crafted with meticulous attention to purity, authenticity, and consistency to deliver an exceptional experience in every product.",
               },
             ].map((v, i) => (
               <Reveal key={v.n} delay={i * 120}>
@@ -252,11 +253,12 @@ function Home() {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16 lg:mb-20">
               <div>
                 <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-6">
-                  — Signature Rituals
+                  — SIGNATURE COLLECTIONS
+
                 </p>
                 <h2 className="font-display text-4xl sm:text-5xl md:text-6xl leading-[1.05] sm:leading-[1]">
-                  Loved by those who know <br className="hidden sm:block" />
-                  <em className="text-gold">beauty from within.</em>
+       Thoughtfully crafted for every         <br className="hidden sm:block" />
+                  <em className="text-gold"> aspect of wellbeing.</em>
                 </h2>
               </div>
               <a
@@ -314,7 +316,8 @@ function Home() {
               ))}
             </div>
             <blockquote className="font-display text-2xl sm:text-3xl md:text-5xl leading-[1.18] sm:leading-[1.15] text-balance italic text-ink">
-              "A refined sanctuary of wellness — where beauty is not merely seen, but deeply felt."
+              "Wellness begins with trust, grows through quality, and endures through consistency.
+"
             </blockquote>
             
            
@@ -327,14 +330,14 @@ function Home() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center">
           <Reveal>
             <p className="text-[11px] uppercase tracking-[0.3em] text-background/50 mb-8">
-              — Join the Circle
+              — JOIN THE ELLIVION COMMUNITY
             </p>
             <h2 className="font-display text-4xl sm:text-5xl md:text-7xl leading-[1.05] sm:leading-[1] text-balance text-white">
-              Begin your <em className="text-gold">ritual.</em>
+        Elevate your everyday with Ellivion.
+
             </h2>
             <p className="mt-6 sm:mt-8 text-base sm:text-lg text-background/70 leading-relaxed max-w-xl mx-auto">
-              Receive 15% off your first order and quiet, monthly letters on the art of conscious
-              beauty.
+         Receive 15% off your first order and stay connected to the latest in wellness, beauty, and fragrance.
             </p>
             <form
               onSubmit={(e) => e.preventDefault()}
@@ -346,13 +349,11 @@ function Home() {
                 className="w-full min-w-0 flex-1 px-6 py-4 rounded-full bg-background/5 border border-background/15 focus:border-background/40 outline-none transition placeholder:text-background/40 text-background"
               />
               <button className="group w-full sm:w-auto px-8 py-4 rounded-full bg-background text-ink text-[12px] uppercase tracking-[0.22em] hover:bg-gold transition flex items-center justify-center gap-2 bg-white text-black">
-                Join
+                Join Today
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
             </form>
-            <p className="mt-6 text-xs text-background/40 tracking-wide">
-              Zero spam. Only soul-nourishing updates.
-            </p>
+         
           </Reveal>
         </div>
       </section>

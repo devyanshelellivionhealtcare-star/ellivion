@@ -22,7 +22,7 @@ export const TEST_REPORTS: TestReport[] = [
   {
     batchNumber: "ELV-ASH-2026-001",
     productName: "Ashwagandha Root Extract Capsules",
-    category: "Ayurvedic",
+    category: "Wellness",
     manufacturingDate: "2026-01-12",
     expiryDate: "2028-01-11",
     testDate: "2026-01-18",

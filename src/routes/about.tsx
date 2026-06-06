@@ -10,7 +10,7 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About — Ellivion Healthcare" },
-      { name: "description", content: "Ellivion Healthcare Private Limited develops high-quality nutraceutical and Ayurvedic products for holistic health and well-being." },
+      { name: "description", content: "Ellivion Healthcare Private Limited develops high-quality nutraceutical and Wellness products for holistic health and well-being." },
     ],
   }),
   component: AboutPage,
@@ -50,10 +50,10 @@ function AboutPage() {
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <p className="text-xs uppercase tracking-[0.25em] text-pink font-semibold">Our story</p>
           <h1 className="mt-6 text-5xl md:text-7xl text-balance leading-[1.02]">
-            Wellness rooted in <em className="italic text-pink">Ayurveda,</em><br />validated by <em className="italic text-pink">science.</em>
+           <em className="italic text-pink"> Wellness, beauty and fragrance </em><br /> <em >thoughtfully reimagined..</em>
           </h1>
           <p className="mt-8 text-lg text-foreground/75 leading-relaxed max-w-2xl mx-auto">
-            Ellivion Healthcare Private Limited is a forward-thinking wellness company dedicated to developing high-quality nutraceutical and Ayurvedic products designed to support holistic health and well-being.
+        We believe exceptional products begin with exceptional standards. Every Ellivion creation is developed with care, guided by quality, and designed to enrich everyday life.
           </p>
         </div>
       </section>
@@ -102,8 +102,8 @@ function AboutPage() {
         <div className="mt-16 grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
           {directors.map((p, i) => (
             <Reveal key={p.name} delay={i * 80}>
-              <div className="group relative bg-card rounded-3xl p-6 shadow-soft hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 border border-pink/10">
-                <div className="overflow-hidden aspect-square rounded-2xl bg-gradient-to-br from-pink to-pink/60 mb-5 shadow-pink">
+              <div className="group relative bg-card rounded-3xl p-6 transition-all duration-500 hover:-translate-y-3 hover:scale-105 border border-pink/10 hover:border-pink/30" style={{ boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1), 0 15px 40px rgba(239, 121, 121, 0.15)" }}>
+                <div className="overflow-hidden aspect-square rounded-2xl bg-gradient-to-br from-pink to-pink/60 mb-5 shadow-pink group-hover:shadow-2xl transition-all duration-500">
                   {p.image ? (
                     <img src={p.image} alt={`${p.name} portrait`} className="h-full w-full object-cover" />
                   ) : (
