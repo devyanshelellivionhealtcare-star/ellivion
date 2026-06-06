@@ -174,7 +174,7 @@ function Home() {
               key={i}
               className="flex items-center font-display text-2xl sm:text-3xl md:text-4xl text-ink/80 italic"
             >
-              {["Glow", "Heal", "Bloom", "Radiate", "Nourish", "Awaken", "Balance", "Elevate"].map(
+              {["Vitality", "Balance", "Nourish", "Restore", "Elevate", "Thrive", "Inspire", "Flourish"].map(
                 (w) => (
                   <span key={w} className="px-5 sm:px-10 flex items-center gap-5 sm:gap-10">
                     {w}
