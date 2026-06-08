@@ -1,3 +1,4 @@
+
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -5,8 +6,6 @@ import {
   ShieldCheck,
   Sparkles,
   Star,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { products } from "@/data/products";
@@ -14,158 +13,248 @@ import { Reveal } from "@/components/Reveal";
 import hero1 from "@/assets/hero1.png";
 import hero2 from "@/assets/hero2.png";
 import hero4 from "@/assets/hero4.png";
+import { AnimatePresence, motion } from "framer-motion";
+import videoFile from "@/assets/Firefly make a nmn bottle little small in last video  927168 (1).mp4";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ellivion — Timeless Beauty & Conscious Wellness" },
+      { title: "Ellivion — Premium Attar Collection" },
       {
         name: "description",
-        content: "Dermatologist-crafted Wellness rituals for radiant skin and graceful longevity.",
+        content:
+          "Timeless scents, rooted in tradition. Explore Ellivion's premium attar collection crafted from the finest natural ingredients.",
+      },
+      { property: "og:title", content: "Ellivion — Premium Attar Collection" },
+      {
+        property: "og:description",
+        content:
+          "Timeless scents, rooted in tradition. Explore Ellivion's premium attar collection.",
       },
     ],
   }),
-  component: Home,
+  component: Index,
 });
 
-type Slide = {
+type HeroProduct = {
+  id: string;
+  name: string;
+  tagline: string;
+  subtitle: string;
+  price: string;
+  oldPrice: string;
   image: string;
-  tint: string;
+  swatch: string;
+  gradient: string;
 };
 
-const slides: Slide[] = [
+const heroProducts: HeroProduct[] = [
   {
+    id: "attar",
+    name: "Premium Attar",
+    tagline: "The Art of Timeless Fragrance.",
+    subtitle:
+      "Discover exquisitely crafted attars inspired by tradition, created with the finest ingredients, and designed for modern connoisseurs.",
+    price: "₹2,100",
+    oldPrice: "₹2,500",
     image: hero1,
-    tint: "#e8d4e8",
+    swatch: "#d4a24c",
+    gradient:
+      "radial-gradient(120% 80% at 50% 40%, #3a1d4f 0%, #1a0a2e 55%, #0d0418 100%)",
   },
   {
+    id: "oud",
+    name: "NMN",
+    tagline: "Elevate Your Everyday Potential.",
+    subtitle:
+      "A premium NMN formula designed to complement your wellness journey and support your active lifestyle every day.",
+    price: "₹1,500",
+    oldPrice: "₹2,490",
     image: hero2,
-    tint: "#d8c4e8",
+    swatch: "#2b3a7a",
+    gradient:
+      "radial-gradient(120% 80% at 50% 40%, #1f2d7a 0%, #0f1740 55%, #060a22 100%)",
   },
   {
+    id: "musk",
+    name: "Kumkumadi Oil",
+    tagline: "The Secret to Timeless Glow",
+    subtitle:
+      "A luxurious facial oil crafted to nourish, hydrate, and reveal your skin's natural glow. Experience radiant, healthy-looking skin with every drop.",
+    price: "₹3,000",
+    oldPrice: "₹4,000",
     image: hero4,
-    tint: "#e8d4e8",
+    swatch: "#e91a8c",
+    gradient:
+      "radial-gradient(120% 80% at 50% 40%, #b71773 0%, #5a0a3a 55%, #1e0414 100%)",
   },
 ];
 
-function Home() {
-  const [idx, setIdx] = useState(0);
-  const slide = slides[idx];
+const productSizes = {
+  attar: ["6ml", "12ml", "24ml"],
+  oud: ["30 caps", "60 caps", "90 caps"],
+  musk: ["6ml", "12ml", "24ml"],
+};
+
+function Index() {
+  const [index, setIndex] = useState(0);
+  const [size, setSize] = useState("");
+  const product = heroProducts[index];
+  const next = heroProducts[(index + 1) % heroProducts.length];
 
   useEffect(() => {
-    const t = setInterval(() => setIdx((i) => (i + 1) % slides.length), 5000);
-    return () => clearInterval(t);
+    setSize(productSizes[product.id][0]);
+  }, [index]);
+
+  // Auto-advance carousel every 4s
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % heroProducts.length);
+    }, 4000);
+    return () => clearInterval(timer);
   }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* HERO - Full Background Image Carousel */}
-      {/* <section
-        className="relative min-h-[calc(100svh-5rem)] lg:min-h-[calc(100vh-5rem)] flex items-center overflow-hidden transition-all duration-[1200ms]"
-        style={{
-          backgroundColor: slide.tint,
-        }}
-      >
-        <img
-          src={slide.image}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-[1200ms] md:object-cover"
-        />
+      {/* HERO */}
+      <section className="relative w-full overflow-hidden bg-transparent min-h-screen flex flex-col px-4 sm:px-6 lg:px-10">
+        {/* Animated background */}
+        <AnimatePresence>
+          <motion.div
+            key={product.id + "-bg"}
+            className="absolute inset-0"
+            style={{ background: product.gradient }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          />
+        </AnimatePresence>
 
-     
-        <div className="absolute inset-0 bg-black/10 md:bg-black/20" />
+        <main className="relative grid flex-1 grid-cols-1 items-center gap-8 py-10 md:grid-cols-[1.1fr_1.4fr_0.9fr]">
+          {/* Left: copy */}
+          <div className="space-y-6">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={product.id + "-copy"}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.5 }}
+              >
+                <p className="mb-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-white/60">
+                  <span className="h-px w-8 bg-white/40" /> Premium Collection
+                </p>
+                <h1 className="font-display text-5xl leading-[1.05] tracking-tight text-white md:text-6xl">
+                  {product.tagline}
+                  <br />
+                  <span className="italic text-white/70">
+                    {product.name.replace("Ellivion ", "")}.
+                  </span>
+                </h1>
+                <p className="mt-5 max-w-md text-sm leading-relaxed text-white/70">
+                  {product.subtitle}
+                </p>
+              </motion.div>
+            </AnimatePresence>
 
-       
-        <div className="absolute bottom-5 sm:bottom-8 lg:bottom-12 left-0 right-0 px-4 sm:px-6 lg:px-10 z-20">
-          <div className="mx-auto max-w-[1600px] flex items-end justify-center sm:justify-between">
-            <div className="hidden md:flex flex-col gap-1 text-[10px] uppercase tracking-[0.3em] text-white/70">
-              <span>Scroll</span>
-              <div className="w-px h-10 bg-white/30 mt-1" />
-            </div>
-            <div className="flex items-center gap-3 sm:gap-6 rounded-full bg-black/15 px-4 py-3 backdrop-blur-sm sm:bg-transparent sm:p-0 sm:backdrop-blur-0">
+            <button className="group inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-medium text-[#1a0a2e] transition hover:gap-4 hover:bg-white/90">
+              Get the look
+              <span className="transition-transform group-hover:translate-x-0.5">
+                →
+              </span>
+            </button>
+          </div>
+
+          {/* Center: bottle */}
+          <div className="relative flex h-[520px] items-center justify-center">
+            {/* glow ring */}
+            <div
+              className="absolute h-[420px] w-[420px] rounded-full blur-3xl opacity-70 transition-colors duration-700"
+              style={{ background: product.swatch }}
+            />
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={product.id}
+                src={product.image}
+                alt={product.name}
+                width={1024}
+                height={1152}
+                className="relative h-[500px] w-auto drop-shadow-[0_40px_60px_rgba(0,0,0,0.55)]"
+                initial={{ opacity: 0, y: 60, rotate: -8, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -60, rotate: 8, scale: 0.9 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              />
+            </AnimatePresence>
+          </div>
+
+          {/* Right: price + sizes */}
+          <div className="flex flex-col items-end gap-6 text-right">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={product.id + "-price"}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4 }}
+                className="flex items-baseline gap-3"
+              >
+                <span className="font-display text-5xl font-medium text-white">
+                  {product.price}
+                </span>
+                <span className="text-lg text-white/40 line-through">
+                  {product.oldPrice}
+                </span>
+              </motion.div>
+            </AnimatePresence>
+
+            <div>
+              <p className="mb-3 text-xs uppercase tracking-[0.25em] text-white/60">
+                Choose your size
+              </p>
               <div className="flex gap-2">
-                {slides.map((_, i) => (
+                {productSizes[product.id].map((s) => (
                   <button
-                    key={i}
-                    onClick={() => setIdx(i)}
-                    className={`h-px transition-all duration-500 ${i === idx ? "w-12 bg-white" : "w-6 bg-white/40"}`}
-                  />
+                    key={s}
+                    onClick={() => setSize(s)}
+                    className={`h-12 w-14 rounded-full border text-sm transition ${
+                      size === s
+                        ? "border-white bg-white text-[#1a0a2e]"
+                        : "border-white/25 text-white/80 hover:border-white/60"
+                    }`}
+                  >
+                    {s}
+                  </button>
                 ))}
               </div>
-              <span className="text-[11px] tracking-[0.2em] text-white/70 tabular-nums">
-                {String(idx + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
-              </span>
-              <div className="hidden sm:flex gap-2 ml-2 text-white">
-                <button
-                  onClick={() => setIdx((i) => (i - 1 + slides.length) % slides.length)}
-                  className="w-10 h-10 rounded-full border border-white/40 flex items-center justify-center hover:bg-white hover:text-black transition"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => setIdx((i) => (i + 1) % slides.length)}
-                  className="w-10 h-10 rounded-full border border-white/40 flex items-center justify-center hover:bg-white hover:text-black transition"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
             </div>
-          </div>
-        </div>
-      </section> */}
-{/* HERO */}
-<section className="relative w-full overflow-hidden bg-transparent">
-  <div className="relative w-full">
-    {/* Banner Image */}
-    <img
-      src={slide.image}
-      alt=""
-      aria-hidden="true"
-      className="block w-full !h-auto sm:!h-96 md:!h-[500px] lg:!h-[80vh] object-contain sm:object-cover bg-gradient-to-b from-pink/20 to-pink/10"
-      // className="block w-full h-80 sm:h-96 md:h-[500px] lg:h-[80vh] object-contain sm:object-cover bg-gradient-to-b from-pink/20 to-pink/10"
-    />
 
-    {/* Slider Controls */}
-    <div className="absolute bottom-1.5 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 w-full px-2">
-      <div className="flex items-center justify-center gap-1 sm:gap-4 rounded-full bg-black/15 backdrop-blur-md px-2 sm:px-4 py-1.5 sm:py-3 max-w-fit mx-auto">
-       
-        <div className="flex gap-1 sm:gap-2">
-          {slides.map((_, i) => (
+            {/* Next product card */}
             <button
-              key={i}
-              onClick={() => setIdx(i)}
-              className={`h-[1.5px] sm:h-[2px] transition-all duration-300 ${
-                i === idx
-                  ? "w-5 sm:w-12 bg-white"
-                  : "w-3 sm:w-6 bg-white/40"
-              }`}
-            />
-          ))}
-        </div> 
+              onClick={() =>
+                setIndex((i) => (i + 1) % heroProducts.length)
+              }
+              className="mt-4 flex w-44 flex-col items-center gap-2 rounded-2xl border border-white/15 bg-white/5 p-3 backdrop-blur-md transition hover:bg-white/10"
+            >
+              <div
+                className="relative flex h-28 w-full items-center justify-center overflow-hidden rounded-xl"
+                style={{ background: next.swatch }}
+              >
+                <img
+                  src={next.image}
+                  alt={next.name}
+                  className="h-24 w-auto drop-shadow-xl"
+                />
+              </div>
+              <span className="text-xs uppercase tracking-[0.2em] text-white/80">
+                Next · {next.name.replace("Ellivion ", "")}
+              </span>
+            </button>
+          </div>
+        </main>
+      </section>
 
-       
-      <div className="flex gap-0.5 sm:gap-2 ml-1 sm:ml-2">
-          <button
-            onClick={() =>
-              setIdx((i) => (i - 1 + slides.length) % slides.length)
-            }
-            className="w-5 h-5 sm:w-8 sm:h-8 rounded-full border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-black transition"
-          >
-            <ChevronLeft className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
-          </button>
-
-          <button
-            onClick={() => setIdx((i) => (i + 1) % slides.length)}
-            className="w-5 h-5 sm:w-8 sm:h-8 rounded-full border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-black transition"
-          >
-            <ChevronRight className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
-          </button>
-        </div> 
-      </div>
-    </div>
-  </div>
-</section>
       {/* MARQUEE */}
       <section className="py-5 sm:py-8 border-y border-border/60 overflow-hidden bg-background">
         <div className="flex whitespace-nowrap animate-marquee">
@@ -174,14 +263,24 @@ function Home() {
               key={i}
               className="flex items-center font-display text-2xl sm:text-3xl md:text-4xl text-ink/80 italic"
             >
-              {["Vitality", "Balance", "Nourish", "Restore", "Elevate", "Thrive", "Inspire", "Flourish"].map(
-                (w) => (
-                  <span key={w} className="px-5 sm:px-10 flex items-center gap-5 sm:gap-10">
-                    {w}
-                    <span className="text-gold not-italic">✦</span>
-                  </span>
-                ),
-              )}
+              {[
+                "Vitality",
+                "Balance",
+                "Nourish",
+                "Restore",
+                "Elevate",
+                "Thrive",
+                "Inspire",
+                "Flourish",
+              ].map((w) => (
+                <span
+                  key={w}
+                  className="px-5 sm:px-10 flex items-center gap-5 sm:gap-10"
+                >
+                  {w}
+                  <span className="text-gold not-italic">✦</span>
+                </span>
+              ))}
             </div>
           ))}
         </div>
@@ -197,14 +296,26 @@ function Home() {
                   — OUR PHILOSOPHY
                 </p>
                 <h2 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] sm:leading-[1] text-balance">
-                Intelligent nutrition for timeless <em className="text-gold">vitality </em> and{" "}
+                  Intelligent nutrition for timeless{" "}
+                  <em className="text-gold">vitality </em> and{" "}
                   <em>elevated living.</em>
                 </h2>
               </div>
               <div className="lg:col-span-5 lg:col-start-8 self-end">
+                <video 
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  className="w-full rounded-sm mb-6 bg-background"
+                >
+                  <source src={videoFile} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
                 <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
-                  Three quiet commitments shape every formula we make — to the earth that gives, the
-                  body that receives, and the moment in between.
+                  Three quiet commitments shape every formula we make — to the
+                  earth that gives, the body that receives, and the moment in
+                  between.
                 </p>
               </div>
             </div>
@@ -234,10 +345,17 @@ function Home() {
               <Reveal key={v.n} delay={i * 120}>
                 <div className="bg-background p-6 sm:p-10 lg:p-14 h-full flex flex-col">
                   <div className="flex items-start justify-between mb-8 sm:mb-12">
-                    <v.icon className="w-6 h-6 sm:w-7 sm:h-7 text-gold" strokeWidth={1.2} />
-                    <span className="font-display text-xl sm:text-2xl text-ink/30">{v.n}</span>
+                    <v.icon
+                      className="w-6 h-6 sm:w-7 sm:h-7 text-gold"
+                      strokeWidth={1.2}
+                    />
+                    <span className="font-display text-xl sm:text-2xl text-ink/30">
+                      {v.n}
+                    </span>
                   </div>
-                  <h3 className="font-display text-2xl sm:text-3xl mb-3 sm:mb-4">{v.t}</h3>
+                  <h3 className="font-display text-2xl sm:text-3xl mb-3 sm:mb-4">
+                    {v.t}
+                  </h3>
                   <p className="text-muted-foreground leading-relaxed">{v.d}</p>
                 </div>
               </Reveal>
@@ -254,10 +372,10 @@ function Home() {
               <div>
                 <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-6">
                   — SIGNATURE COLLECTIONS
-
                 </p>
                 <h2 className="font-display text-4xl sm:text-5xl md:text-6xl leading-[1.05] sm:leading-[1]">
-       Thoughtfully crafted for every         <br className="hidden sm:block" />
+                  Thoughtfully crafted for every{" "}
+                  <br className="hidden sm:block" />
                   <em className="text-gold"> aspect of wellbeing.</em>
                 </h2>
               </div>
@@ -290,10 +408,9 @@ function Home() {
                   </div>
                   <div className="mt-4 sm:mt-5 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
                     <div className="min-w-0">
-                      <p className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground mb-2">
-                        {p.category}
-                      </p>
-                      <h3 className="font-display text-xl sm:text-2xl leading-tight">{p.name}</h3>
+                      <h3 className="font-display text-xl sm:text-2xl leading-tight">
+                        {p.name}
+                      </h3>
                     </div>
                     <span className="font-display text-lg sm:text-xl tabular-nums shrink-0">
                       ₹{p.price.toLocaleString()}
@@ -316,28 +433,26 @@ function Home() {
               ))}
             </div>
             <blockquote className="font-display text-2xl sm:text-3xl md:text-5xl leading-[1.18] sm:leading-[1.15] text-balance italic text-ink">
-              "Wellness begins with trust, grows through quality, and endures through consistency.
-"
+              "Wellness begins with trust, grows through quality, and endures
+              through consistency."
             </blockquote>
-            
-           
           </Reveal>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 sm:py-28 lg:py-32 bg-ink text-background bg-[#ef7979]">
+      <section className="py-20 sm:py-28 lg:py-32 bg-[#ef7979]">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center">
           <Reveal>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-background/50 mb-8">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-white/60 mb-8">
               — JOIN THE ELLIVION COMMUNITY
             </p>
             <h2 className="font-display text-4xl sm:text-5xl md:text-7xl leading-[1.05] sm:leading-[1] text-balance text-white">
-        Elevate your everyday with Ellivion.
-
+              Elevate your everyday with Ellivion.
             </h2>
-            <p className="mt-6 sm:mt-8 text-base sm:text-lg text-background/70 leading-relaxed max-w-xl mx-auto">
-         Receive 15% off your first order and stay connected to the latest in wellness, beauty, and fragrance.
+            <p className="mt-6 sm:mt-8 text-base sm:text-lg text-white/70 leading-relaxed max-w-xl mx-auto">
+              Receive 15% off your first order and stay connected to the latest
+              in wellness, beauty, and fragrance.
             </p>
             <form
               onSubmit={(e) => e.preventDefault()}
@@ -346,14 +461,13 @@ function Home() {
               <input
                 type="email"
                 placeholder="your@email.com"
-                className="w-full min-w-0 flex-1 px-6 py-4 rounded-full bg-background/5 border border-background/15 focus:border-background/40 outline-none transition placeholder:text-background/40 text-background"
+                className="w-full min-w-0 flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/20 focus:border-white/50 outline-none transition placeholder:text-white/40 text-white"
               />
-              <button className="group w-full sm:w-auto px-8 py-4 rounded-full bg-background text-ink text-[12px] uppercase tracking-[0.22em] hover:bg-gold transition flex items-center justify-center gap-2 bg-white text-black">
+              <button className="group w-full sm:w-auto px-8 py-4 rounded-full bg-white text-black text-[12px] uppercase tracking-[0.22em] hover:bg-gold transition flex items-center justify-center gap-2">
                 Join Today
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
             </form>
-         
           </Reveal>
         </div>
       </section>
@@ -361,4 +475,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Index;

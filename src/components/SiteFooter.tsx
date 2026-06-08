@@ -32,17 +32,17 @@ export function SiteFooter() {
       {/* Navy main section */}
       <div style={{ background: NAVY, color: CREAM }}>
         <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-16 py-30 lg:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 text-center sm:text-left">
             {/* LEFT COLUMN — Brand */}
-            <div>
+            <div className="flex flex-col items-center sm:items-start">
            
-               <div className="bg-white/95 inline-block p-3">
+               <div className="bg-white/95 inline-block p-3 mb-4">
             <img src={logo} alt="Ellivion Healthcare" className="h-12 w-auto" />
           </div>
             
 
               <div className="flex">
-                 <h4 className="text-sm font-semibold mb-4 text-[20px] text-white mt-8  normal-case">
+                 <h4 className="text-sm font-[400] mb-4 text-[20px] text-white mt-8  normal-case">
           
           Ellivion brings together wellness, beauty, and fragrance in thoughtfully curated collections designed to enrich everyday living.
          </h4>
@@ -50,7 +50,7 @@ export function SiteFooter() {
 
              
 
-             <div className="mt-6 flex gap-3">
+             <div className="mt-6 flex gap-3 justify-center sm:justify-start">
             {[Instagram, Twitter, Facebook, Mail].map((Icon, i) => (
               <a key={i} href={Icon === Instagram ? "https://www.instagram.com/ellivion.official?igsh=c2NxZ3Nka25xanJz" : Icon === Twitter ? "https://twitter.com/ellivion" : Icon === Facebook ? "https://www.facebook.com/share/1B3P9fEz4W/" : "mailto:info@ellivion.com"} className="p-2.5 rounded-full bg-white/15 hover:bg-pink transition-colors" aria-label="social">
                 <Icon size={16} />
@@ -60,7 +60,7 @@ export function SiteFooter() {
             </div>
 
          
-            <div>
+            <div className="flex flex-col items-center sm:items-start gap-8">
             
    <div>
           <h4 className="text-sm font-semibold mb-4 text-[20px] text-white">Explore</h4>
@@ -84,7 +84,7 @@ export function SiteFooter() {
             </div>
 
             {/* RIGHT COLUMN — Map */}
-            <div>
+            <div className="flex flex-col items-center sm:items-start">
               <div className="border overflow-hidden shadow-2xl" style={{ borderColor: GOLD }}>
                 <iframe
                   title="Ellivion Location"
