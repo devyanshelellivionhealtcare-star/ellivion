@@ -19,13 +19,13 @@ import videoFile from "@/assets/Firefly make a nmn bottle little small in last v
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ellivion — Premium Attar Collection" },
+      { title: "Ellivion — Wellness Beauty and Fragrance" },
       {
         name: "description",
         content:
           "Timeless scents, rooted in tradition. Explore Ellivion's premium attar collection crafted from the finest natural ingredients.",
       },
-      { property: "og:title", content: "Ellivion — Premium Attar Collection" },
+      { property: "og:title", content: "Ellivion — Wellness Beauty and Fragrance" },
       {
         property: "og:description",
         content:
