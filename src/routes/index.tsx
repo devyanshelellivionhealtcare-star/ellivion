@@ -19,17 +19,17 @@ import videoFile from "@/assets/Firefly make a nmn bottle little small in last v
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ellivion — Wellness Beauty and Fragrance" },
+      { title: "Wellness, Beauty & Fragrance | Ellivion Healthcare" },
       {
         name: "description",
         content:
-          "Timeless scents, rooted in tradition. Explore Ellivion's premium attar collection crafted from the finest natural ingredients.",
+          "Discover premium wellness, beauty, and fragrance products. Ellivion Healthcare offers high-quality personal care solutions for a healthier and luxurious lifestyle.",
       },
-      { property: "og:title", content: "Ellivion — Wellness Beauty and Fragrance" },
+      { property: "og:title", content: "Wellness, Beauty & Fragrance | Ellivion Healthcare" },
       {
         property: "og:description",
         content:
-          "Timeless scents, rooted in tradition. Explore Ellivion's premium attar collection.",
+          "Discover premium wellness, beauty, and fragrance products. Ellivion Healthcare offers high-quality personal care solutions for a healthier and luxurious lifestyle.",
       },
     ],
   }),
